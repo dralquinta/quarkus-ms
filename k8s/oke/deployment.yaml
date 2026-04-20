@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quarkus-ms
+  namespace: quarkus-ms
+  labels:
+    app: quarkus-ms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quarkus-ms
+  template:
+    metadata:
+      labels:
+        app: quarkus-ms
+    spec:
+      containers:
+        - name: quarkus-ms
+          image: docker.io/dralquinta/quarkus-ms:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: DB_JDBC_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: quarkus-ms-config
+                  key: DB_JDBC_URL
+            - name: DB_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: quarkus-ms-config
+                  key: DB_USERNAME
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: quarkus-ms-secrets
+                  key: DB_PASSWORD
