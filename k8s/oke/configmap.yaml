@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: quarkus-ms-config
+  namespace: quarkus-ms
+data:
+  # Update host when PostgreSQL service name differs from "postgresql".
+  DB_JDBC_URL: jdbc:postgresql://postgresql:5432/quarkus_ms

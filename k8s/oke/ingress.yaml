@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: quarkus-ms
+  namespace: quarkus-ms
+spec:
+  ingressClassName: nginx
+  rules:
+    # Replace with your public DNS host.
+    - host: quarkus-ms.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: quarkus-ms
+                port:
+                  number: 80
