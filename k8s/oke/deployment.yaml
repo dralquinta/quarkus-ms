@@ -6,6 +6,7 @@ metadata:
   labels:
     app: quarkus-ms
 spec:
+  # Increase replicas for production workloads based on expected traffic.
   replicas: 1
   selector:
     matchLabels:
@@ -30,8 +31,8 @@ spec:
                   key: DB_JDBC_URL
             - name: DB_USERNAME
               valueFrom:
-                configMapKeyRef:
-                  name: quarkus-ms-config
+                secretKeyRef:
+                  name: quarkus-ms-secrets
                   key: DB_USERNAME
             - name: DB_PASSWORD
               valueFrom:

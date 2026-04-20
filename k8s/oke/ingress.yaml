@@ -3,10 +3,10 @@ kind: Ingress
 metadata:
   name: quarkus-ms
   namespace: quarkus-ms
-  annotations:
-    kubernetes.io/ingress.class: nginx
 spec:
+  ingressClassName: nginx
   rules:
+    # Replace with your public DNS host.
     - host: quarkus-ms.example.com
       http:
         paths:

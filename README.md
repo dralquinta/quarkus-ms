@@ -30,16 +30,12 @@ Apply them in order:
 ```bash
 kubectl apply -f k8s/oke/namespace.yaml
 kubectl apply -f k8s/oke/configmap.yaml
+kubectl -n quarkus-ms create secret generic quarkus-ms-secrets \
+  --from-literal=DB_USERNAME='quarkus' \
+  --from-literal=DB_PASSWORD='<your-db-password>'
 kubectl apply -f k8s/oke/deployment.yaml
 kubectl apply -f k8s/oke/service.yaml
 kubectl apply -f k8s/oke/ingress.yaml
-```
-
-Create the referenced secret before deploying:
-
-```bash
-kubectl -n quarkus-ms create secret generic quarkus-ms-secrets \
-  --from-literal=DB_PASSWORD='<your-db-password>'
 ```
 
 Update the ingress host in `k8s/oke/ingress.yaml` to your DNS name.

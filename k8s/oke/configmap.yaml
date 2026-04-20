@@ -5,4 +5,3 @@ metadata:
   namespace: quarkus-ms
 data:
   DB_JDBC_URL: jdbc:postgresql://postgresql:5432/quarkus_ms
-  DB_USERNAME: quarkus
