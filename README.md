@@ -21,7 +21,7 @@ Kubernetes manifests for Oracle Kubernetes Engine (OKE) are available in:
 
 - `k8s/oke/namespace.yaml`
 - `k8s/oke/configmap.yaml`
-- `k8s/oke/secret.yaml`
+- `k8s/oke/secret-template.yaml`
 - `k8s/oke/deployment.yaml`
 - `k8s/oke/service.yaml`
 - `k8s/oke/ingress.yaml`
@@ -31,8 +31,9 @@ Apply them in order:
 ```bash
 kubectl apply -f k8s/oke/namespace.yaml
 kubectl apply -f k8s/oke/configmap.yaml
-# Edit k8s/oke/secret.yaml with your real credentials before applying it.
-kubectl apply -f k8s/oke/secret.yaml
+cp k8s/oke/secret-template.yaml /tmp/quarkus-ms-secret.yaml
+# Edit /tmp/quarkus-ms-secret.yaml with your real credentials before applying it.
+kubectl apply -f /tmp/quarkus-ms-secret.yaml
 kubectl apply -f k8s/oke/deployment.yaml
 kubectl apply -f k8s/oke/service.yaml
 kubectl apply -f k8s/oke/ingress.yaml

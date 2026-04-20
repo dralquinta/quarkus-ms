@@ -24,12 +24,14 @@ spec:
             - containerPort: 8080
               name: http
           readinessProbe:
+            # Uses an existing endpoint because health extension is not enabled.
             httpGet:
               path: /api/v1/something
               port: http
             initialDelaySeconds: 10
             periodSeconds: 10
           livenessProbe:
+            # Uses an existing endpoint because health extension is not enabled.
             httpGet:
               path: /api/v1/something
               port: http
