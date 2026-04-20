@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
         - name: quarkus-ms
-          image: docker.io/dralquinta/quarkus-ms:1.0.0-SNAPSHOT
-          imagePullPolicy: Always
+          image: docker.io/dralquinta/quarkus-ms:1.0.0
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
               name: http
