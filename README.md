@@ -21,6 +21,7 @@ Kubernetes manifests for Oracle Kubernetes Engine (OKE) are available in:
 
 - `k8s/oke/namespace.yaml`
 - `k8s/oke/configmap.yaml`
+- `k8s/oke/secret.yaml`
 - `k8s/oke/deployment.yaml`
 - `k8s/oke/service.yaml`
 - `k8s/oke/ingress.yaml`
@@ -30,13 +31,13 @@ Apply them in order:
 ```bash
 kubectl apply -f k8s/oke/namespace.yaml
 kubectl apply -f k8s/oke/configmap.yaml
-kubectl -n quarkus-ms create secret generic quarkus-ms-secrets \
-  --from-literal=DB_USERNAME='quarkus' \
-  --from-literal=DB_PASSWORD='<your-db-password>'
+# Edit k8s/oke/secret.yaml with your real credentials before applying it.
+kubectl apply -f k8s/oke/secret.yaml
 kubectl apply -f k8s/oke/deployment.yaml
 kubectl apply -f k8s/oke/service.yaml
 kubectl apply -f k8s/oke/ingress.yaml
 ```
 
+Do not commit real secret values to version control.
 Update the ingress host in `k8s/oke/ingress.yaml` to your DNS name.
 Update the image tag in `k8s/oke/deployment.yaml` to your released container version before production rollout.
