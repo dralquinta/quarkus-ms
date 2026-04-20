@@ -19,10 +19,22 @@ spec:
       containers:
         - name: quarkus-ms
           image: docker.io/dralquinta/quarkus-ms:1.0.0
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
               name: http
+          readinessProbe:
+            httpGet:
+              path: /api/v1/something
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /api/v1/something
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 20
           env:
             - name: DB_JDBC_URL
               valueFrom:
