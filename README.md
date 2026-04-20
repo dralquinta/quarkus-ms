@@ -39,3 +39,4 @@ kubectl apply -f k8s/oke/ingress.yaml
 ```
 
 Update the ingress host in `k8s/oke/ingress.yaml` to your DNS name.
+Update the image tag in `k8s/oke/deployment.yaml` to your released container version before production rollout.
